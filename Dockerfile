@@ -1,14 +1,14 @@
-FROM alpine
+FROM php:7-fpm-alpine
 MAINTAINER krish512 <krish512@hotmail.com>
 
 WORKDIR /var/www/html
 
 RUN apk update && apk add ca-certificates && update-ca-certificates && apk add openssl
 
-RUN apk --update add \
+RUN apk add \
 	nginx \
 	gzip \
-        php7 \
+        php7-fpm \
         php7-dom \
         php7-ctype \
         php7-curl \
@@ -18,7 +18,7 @@ RUN apk --update add \
         php7-json \
         php7-mbstring \
         php7-mcrypt \
-        php7-mysql \
+        php7-mysqli \
         php7-mysqlnd \
         php7-opcache \
         php7-pdo \
@@ -32,7 +32,8 @@ RUN apk --update add \
         php7-zlib \
     && rm -rf /var/cache/apk/*
 
-RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.0.0.tar.gz | tar xz --strip 1 \
+
+RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.1.tar.gz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
 
