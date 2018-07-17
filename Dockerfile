@@ -25,6 +25,7 @@ RUN && apk add \
         php7-openssl \
         php7-zlib \
 	php7-memcached \
+	php7-json \
     && rm -rf /var/cache/apk/* \
     && wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.4.tar.gz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
