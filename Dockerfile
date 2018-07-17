@@ -33,7 +33,7 @@ RUN apk add \
     && rm -rf /var/cache/apk/*
 
 
-RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.1.tar.gz | tar xz --strip 1 \
+RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.4.tar.gz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
 
