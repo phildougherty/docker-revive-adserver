@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER krish512 <krish512@hotmail.com>
+MAINTAINER Phil Dougherty <phil@do.co>
 
 WORKDIR /var/www/html
 
@@ -15,6 +15,7 @@ RUN apk --update add \
         nginx \
         gzip \
         pcre \
+        libzip-dev \
         php7 \
         php7-curl \
         php7-fpm \
@@ -22,6 +23,7 @@ RUN apk --update add \
         php7-mbstring \
         php7-mysqli \
         php7-mysqlnd \
+        php7-pgsql \
         php7-opcache \
         php7-pdo \
         php7-pdo_mysql \
@@ -30,9 +32,10 @@ RUN apk --update add \
         php7-zlib \
         php7-memcached \
         php7-json \
+        php7-zip \
     && rm -rf /var/cache/apk/*
 
-RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.4.tar.gz | tar xz --strip 1 \
+RUN wget -qO- https://download.revive-adserver.com/revive-adserver-5.0.5.tar.gz | tar xz --strip 1 \
     && chown -cfR nobody:nobody . \
     && rm -rf /var/cache/apk/* \
     && echo -e "#!/bin/sh\ncurl -s -o /dev/null http://127.0.0.1/maintenance.php" > /etc/periodic/daily/maintenance \
